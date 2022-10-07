@@ -1,0 +1,91 @@
+[
+    {
+        "id": "9886359a7e6125c9",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "af3ae692b04e9326",
+        "type": "rpi-dht22",
+        "z": "9886359a7e6125c9",
+        "name": "",
+        "topic": "rpi-dht11",
+        "dht": "11",
+        "pintype": "0",
+        "pin": "4",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "4ff1da748d8c12a9",
+                "370f4cef07cd3c7d"
+            ]
+        ]
+    },
+    {
+        "id": "7be64b58574853ac",
+        "type": "inject",
+        "z": "9886359a7e6125c9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "af3ae692b04e9326"
+            ]
+        ]
+    },
+    {
+        "id": "4ff1da748d8c12a9",
+        "type": "debug",
+        "z": "9886359a7e6125c9",
+        "name": "Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "370f4cef07cd3c7d",
+        "type": "debug",
+        "z": "9886359a7e6125c9",
+        "name": "Humidity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "humidity",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 380,
+        "wires": []
+    }
+]
