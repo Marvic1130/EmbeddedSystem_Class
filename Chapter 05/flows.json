@@ -1,0 +1,73 @@
+[
+    {
+        "id": "9886359a7e6125c9",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "af3ae692b04e9326",
+        "type": "rpi-dht22",
+        "z": "9886359a7e6125c9",
+        "name": "",
+        "topic": "rpi-dht11",
+        "dht": "11",
+        "pintype": "0",
+        "pin": "4",
+        "x": 520,
+        "y": 300,
+        "wires": [
+            [
+                "d22dd28f4e353e1f"
+            ]
+        ]
+    },
+    {
+        "id": "7be64b58574853ac",
+        "type": "inject",
+        "z": "9886359a7e6125c9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "af3ae692b04e9326"
+            ]
+        ]
+    },
+    {
+        "id": "d22dd28f4e353e1f",
+        "type": "debug",
+        "z": "9886359a7e6125c9",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 300,
+        "wires": []
+    }
+]
