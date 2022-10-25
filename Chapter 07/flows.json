@@ -1,0 +1,425 @@
+[
+    {
+        "id": "d99f807356755b36",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a6e17a5db58d1db1",
+        "type": "rpi-dht22",
+        "z": "d99f807356755b36",
+        "name": "",
+        "topic": "rpi-dht11",
+        "dht": "11",
+        "pintype": "0",
+        "pin": "4",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "ffaba946ac9f385e",
+                "a2e7f258d4968116",
+                "bea88d9a072a6e81",
+                "f2b2a56dccf62862",
+                "150dfbb7d5248332",
+                "2a99c5801cfa6dfb",
+                "36a0dedc5790997e"
+            ]
+        ]
+    },
+    {
+        "id": "67b24ae08e7c1104",
+        "type": "inject",
+        "z": "d99f807356755b36",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "a6e17a5db58d1db1"
+            ]
+        ]
+    },
+    {
+        "id": "ffaba946ac9f385e",
+        "type": "debug",
+        "z": "d99f807356755b36",
+        "name": "Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a2e7f258d4968116",
+        "type": "debug",
+        "z": "d99f807356755b36",
+        "name": "Humidity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "humidity",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bea88d9a072a6e81",
+        "type": "ui_gauge",
+        "z": "d99f807356755b36",
+        "name": "",
+        "group": "a9bb84f5d17eedc5",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Temperature",
+        "format": "{{msg.payload}}C°",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "1d015bc9108bc0a1",
+        "type": "ui_gauge",
+        "z": "d99f807356755b36",
+        "name": "",
+        "group": "73d5f280f2a3cdc7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "Humidity",
+        "format": "{{msg.payload}}%",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 940,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fc8a1a91939db2e5",
+        "type": "ui_chart",
+        "z": "d99f807356755b36",
+        "name": "",
+        "group": "73d5f280f2a3cdc7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 940,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2b2a56dccf62862",
+        "type": "ui_chart",
+        "z": "d99f807356755b36",
+        "name": "",
+        "group": "a9bb84f5d17eedc5",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 730,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "150dfbb7d5248332",
+        "type": "function",
+        "z": "d99f807356755b36",
+        "name": "function 1",
+        "func": "msg.payload = msg.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 400,
+        "wires": [
+            [
+                "1d015bc9108bc0a1",
+                "fc8a1a91939db2e5",
+                "acc64f21fcdcf875"
+            ]
+        ]
+    },
+    {
+        "id": "acc64f21fcdcf875",
+        "type": "ui_text",
+        "z": "d99f807356755b36",
+        "group": "73d5f280f2a3cdc7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Humidity",
+        "format": "{{msg.payload}}%",
+        "layout": "row-spread",
+        "className": "",
+        "x": 940,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2a99c5801cfa6dfb",
+        "type": "ui_text",
+        "z": "d99f807356755b36",
+        "group": "a9bb84f5d17eedc5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload}}⁣C°",
+        "layout": "row-spread",
+        "className": "",
+        "x": 730,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7678626d0974dd06",
+        "type": "image",
+        "z": "d99f807356755b36",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 720,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "d460588de7243e67",
+        "type": "base64",
+        "z": "d99f807356755b36",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 940,
+        "y": 500,
+        "wires": [
+            [
+                "265ac3a55da2151b"
+            ]
+        ]
+    },
+    {
+        "id": "265ac3a55da2151b",
+        "type": "template",
+        "z": "d99f807356755b36",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"100%\" height=\"100%\" alt=\"Image not found\" src=\"data:image/png;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 940,
+        "y": 560,
+        "wires": [
+            [
+                "712f1ae50cee6053"
+            ]
+        ]
+    },
+    {
+        "id": "712f1ae50cee6053",
+        "type": "ui_template",
+        "z": "d99f807356755b36",
+        "group": "c5afdf5d5fa10a5a",
+        "name": "",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 940,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36a0dedc5790997e",
+        "type": "usbcamera",
+        "z": "d99f807356755b36",
+        "filemode": "0",
+        "filename": "image01.jpg",
+        "filedefpath": "1",
+        "filepath": "",
+        "fileformat": "jpeg",
+        "resolution": "1",
+        "name": "",
+        "x": 730,
+        "y": 440,
+        "wires": [
+            [
+                "7678626d0974dd06",
+                "d460588de7243e67"
+            ]
+        ]
+    },
+    {
+        "id": "a9bb84f5d17eedc5",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "a362c6d069f6e8f0",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "73d5f280f2a3cdc7",
+        "type": "ui_group",
+        "name": "Humidity",
+        "tab": "a362c6d069f6e8f0",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c5afdf5d5fa10a5a",
+        "type": "ui_group",
+        "name": "Image",
+        "tab": "a362c6d069f6e8f0",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a362c6d069f6e8f0",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
