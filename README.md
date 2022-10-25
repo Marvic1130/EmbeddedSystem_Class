@@ -16,3 +16,5 @@ Ex: Chapter 04 == 4주차 실습 파일
 >위키: Chapter2 코드 파일: Chapter 04(4주차 실습)
 
 >위키: Chapter3 코드 파일: Chapter 05(5주차 실습)
+
+>위키: Chapter3.1 코드 파일: Chapter 06(6주차 실습)
