@@ -1,9 +1,9 @@
 import socket
-import cv2
 import numpy as np
 import os
 import random
 import cv2
+from keras.models import load_model
 
 
 # socket에서 수신한 버퍼를 반환하는 함수
@@ -21,6 +21,8 @@ def recvall(sock, count):
 def rename_file(dist_lable: str):
     count = 0
     file_list = os.listdir("croppedData")
+
+
     for i in range(file_list.__len__()):
         if file_list[i].endswith(".jpg"):
 
@@ -33,6 +35,8 @@ def rename_file(dist_lable: str):
 
 if __name__ == '__main__':
     facenet = cv2.dnn.readNet('models/model.prototxt', 'models/model.caffemodel')
+    model_path = 'models/68aF26c2/68aF26c2.h5'
+    model = load_model(model_path)
 
     HOST = '0.0.0.0'
     PORT = 8808
@@ -95,12 +99,28 @@ if __name__ == '__main__':
             cropped_data_path = "croppedData/temp" + random.randrange(0, 999999).__str__() + ".jpg"
             height_dist = (y2 - y1) // 2
             crop = frame[y1: y2 - height_dist, x1: x2]
+
+            face_input = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+            face_input = cv2.resize(face_input, (192, 128))
+            face_input = np.expand_dims(face_input, axis=0)
+            face_input = np.array(face_input)
+
+            modelpredict = model.predict(face_input)
+            pred_class_ls = modelpredict[0, :]
+            for i in range(pred_class_ls.__len__()):
+                if pred_class_ls[i]:
+                    lable = i.__str__()
+                    break
+
             try:
                 cv2.imwrite(cropped_data_path, crop)
             except Exception as e:
                 print(e)
 
             cv2.rectangle(frame, pt1=(x1, y1), pt2=(x2, y2), thickness=2, color=color, lineType=cv2.LINE_AA)
+            cv2.putText(frame , text=lable, org=(x1, y1 - 10), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8,
+                        color = color, thickness=2, lineType=cv2.LINE_AA)
+
 
         cv2.imshow('masktest', frame)
 
